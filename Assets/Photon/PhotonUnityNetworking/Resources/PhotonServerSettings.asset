@@ -40,6 +40,10 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - Hat
+  - Attack
+  - TriggerEvent
+  - RPC_Kick
+  - RPC_Punch
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
