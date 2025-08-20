@@ -3,14 +3,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))] // 필수 컴포넌트 표시
+[RequireComponent(typeof(CharacterController))]
 public class Simple_PlayerController : MonoBehaviourPun
 {
     private CharacterController cc;
 
     [SerializeField] private TextMeshPro nickName;
     [SerializeField] private GameObject hat;
-
+    
     private Vector3 moveInput;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float turnSpeed = 10f;
@@ -19,15 +19,15 @@ public class Simple_PlayerController : MonoBehaviourPun
     {
         cc = GetComponent<CharacterController>();
 
-        if (photonView.IsMine) // 내 이름 불러오기
+        if (photonView.IsMine)
         {
             nickName.text = PhotonNetwork.NickName;
-            nickName.color = Color.black;
+            nickName.color = Color.green;
         }
-        else // 다른 플레이어의 이름도 불러오기
+        else
         {
             nickName.text = photonView.Owner.NickName;
-            nickName.color = Color.green;
+            nickName.color = Color.red;
         }
     }
 
@@ -39,7 +39,7 @@ public class Simple_PlayerController : MonoBehaviourPun
             Turn();
         }
     }
-
+    
     private void Move()
     {
         cc.Move(moveInput * moveSpeed * Time.deltaTime);
@@ -67,7 +67,7 @@ public class Simple_PlayerController : MonoBehaviourPun
             photonView.RPC("Hat", RpcTarget.All, true);
         }
     }
-
+    
     void OnHatOff()
     {
         if (photonView.IsMine)

@@ -1,5 +1,6 @@
 using System.Collections;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -9,20 +10,18 @@ using UnityEngine.UI;
 public class Fight_PlayerController : MonoBehaviourPun
 {
     private Animator anim;
-
+    private PlayerInput playerInput;
     [SerializeField] private TextMeshPro nickName;
     [SerializeField] private Transform playerRoot;
 
     [SerializeField] private GameObject punchBox;
     [SerializeField] private GameObject kickBox;
 
-    private bool isAttack = false; //PlayerInput을 사용하기 전에 필요했음
-    private PlayerInput playerInput;
-
     [SerializeField] private Image hpBar;
     private float currentHp = 100f;
     private float maxHp = 100f;
 
+    private bool isAttack = false;
     public bool isDead = false;
 
     void Start()
@@ -44,7 +43,7 @@ public class Fight_PlayerController : MonoBehaviourPun
         {
             nickName.text = photonView.Owner.NickName;
             nickName.color = Color.red;
-
+            
             playerInput.enabled = false;
         }
     }
@@ -60,33 +59,6 @@ public class Fight_PlayerController : MonoBehaviourPun
         if (!isAttack && !isDead)
             photonView.RPC("Attack", RpcTarget.All, "Kick", 0.6f, 0.2f, 1);
     }
-
-    #region 코루틴 통합 전
-    //IEnumerator PunchRoutine()
-    //{
-    //    isAttack = true;
-    //    anim.SetTrigger("Punch");
-    //    yield return new WaitForSeconds(0.5f);
-    //    punchBox.SetActive(true);
-
-    //    yield return new WaitForSeconds(0.3f);
-    //    punchBox.SetActive(false);
-    //    isAttack = false;
-    //}
-
-    //IEnumerator KickRoutine()
-    //{
-    //    isAttack = true;
-
-    //    anim.SetTrigger("Kick");
-    //    yield return new WaitForSeconds(0.6f);
-    //    kickBox.SetActive(true);
-
-    //    yield return new WaitForSeconds(0.2f);
-    //    kickBox.SetActive(false);
-    //    isAttack = false;
-    //}
-    #endregion
 
     [PunRPC]
     private void Attack(string parameter, float playTime, float endTime, int hitBoxIndex)

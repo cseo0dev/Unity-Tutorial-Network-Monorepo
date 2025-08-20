@@ -89,7 +89,7 @@
                 {
                     "name": "HatOff",
                     "type": "Button",
-                    "id": "627b03e0-c7bf-41d1-a858-1608e20d9065",
+                    "id": "7df1dc17-b99a-405f-b239-1ef8414e9eb3",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -98,7 +98,7 @@
                 {
                     "name": "HatOn",
                     "type": "Button",
-                    "id": "0604093c-8eae-46a4-b4f7-ac1cb218f4cf",
+                    "id": "e3ca29d3-b9e7-418c-8b20-bfd4c0f5652d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -493,7 +493,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5772a8bc-1f1e-46a5-9892-9b258871fbeb",
+                    "id": "b782cd2c-6149-4768-bae4-2e92421eba9a",
                     "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
@@ -504,7 +504,7 @@
                 },
                 {
                     "name": "",
-                    "id": "45ed1c40-6746-4370-91b0-a48801d82f3b",
+                    "id": "b16b533b-6a1d-4fd8-a41a-95e33854222e",
                     "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",

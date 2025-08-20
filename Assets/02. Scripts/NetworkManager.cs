@@ -13,9 +13,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        Screen.SetResolution(1920, 1080, false); // ÇØ»óµµ ¼³Á¤, false = Full Screen »ç¿ë ¿©ºÎ
-        PhotonNetwork.SendRate = 60; // ³» ÄÄÇ»ÅÍ °ÔÀÓ Á¤º¸¿¡ ´ëÇÑ Àü¼Û·ü
-        PhotonNetwork.SerializationRate = 30; // Photon View °üÃø ÁßÀÎ ´ë»ó¿¡ ´ëÇÑ Àü¼Û·ü
+        Screen.SetResolution(1920, 1080, false);
+        PhotonNetwork.SendRate = 60;
+        PhotonNetwork.SerializationRate = 30;
         PhotonNetwork.GameVersion = gameVersion;
     }
 
@@ -27,20 +27,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Connect()
     {
         PhotonNetwork.NickName = nickNameField.text;
-
-        PhotonNetwork.ConnectUsingSettings(); // App ID ±â¹İÀ¸·Î Á¢¼Ó
-        Debug.Log("¼­¹ö Á¢¼Ó");
+        
+        PhotonNetwork.ConnectUsingSettings();
+        Debug.Log("ì„œë²„ ì ‘ì†");
     }
 
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 20 }, null);
-        Debug.Log("¼­¹ö Á¢¼Ó ¿Ï·á");
+        Debug.Log("ì„œë²„ ì ‘ì† ì™„ë£Œ");
     }
 
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel(1);
-        Debug.Log("¹æ ÀÔÀå");
+        Debug.Log("ì”¬ ì „í™˜");
     }
 }

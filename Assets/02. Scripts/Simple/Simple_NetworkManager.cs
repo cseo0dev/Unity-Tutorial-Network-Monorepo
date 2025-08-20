@@ -2,18 +2,16 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-// MonoBehaviourPunCallbacks -> ¸Å´ÏÀúÀÏ ¶§ »ç¿ë
-// MonoBehaviourPun -> ¸øµéÀ½!
 public class Simple_NetworkManager : MonoBehaviourPunCallbacks
 {
     private string gameVersion = "1";
 
     void Awake()
     {
-        Screen.SetResolution(1920, 1080, false); // ÇØ»óµµ ¼³Á¤, false = Full Screen »ç¿ë ¿©ºÎ
-        PhotonNetwork.SendRate = 60; // ³» ÄÄÇ»ÅÍ °ÔÀÓ Á¤º¸¿¡ ´ëÇÑ Àü¼Û·ü
-        PhotonNetwork.SerializationRate = 30; // Photon View °üÃø ÁßÀÎ ´ë»ó¿¡ ´ëÇÑ Àü¼Û·ü
-        PhotonNetwork.GameVersion = gameVersion;
+        Screen.SetResolution(1920, 1080, false); // í•´ìƒë„ ì„¤ì •
+        PhotonNetwork.SendRate = 60; // ë‚´ ì»´í“¨í„° ê²Œì„ ì •ë³´ì— ëŒ€í•œ ì „ì†¡ë¥ 
+        PhotonNetwork.SerializationRate = 30; // Photon View ê´€ì¸¡ ì¤‘ì¸ ëŒ€ìƒì— ëŒ€í•œ ì „ì†¡ë¥ 
+        PhotonNetwork.GameVersion = gameVersion; // ë²„ì „ ì„¤ì •
     }
 
     void Start()
@@ -23,21 +21,19 @@ public class Simple_NetworkManager : MonoBehaviourPunCallbacks
 
     private void Connect()
     {
-        PhotonNetwork.ConnectUsingSettings(); // App ID ±â¹İÀ¸·Î Á¢¼Ó
-        Debug.Log("¼­¹ö Á¢¼Ó");
+        PhotonNetwork.ConnectUsingSettings();
+        Debug.Log("ì„œë²„ ì ‘ì†");
     }
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 20}, null);
-        Debug.Log("¼­¹ö Á¢¼Ó ¿Ï·á");
+        PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 20 }, null);
+        Debug.Log("ì„œë²„ ì ‘ì† ì™„ë£Œ");
     }
 
     public override void OnJoinedRoom()
     {
-        // ³×Æ®¿öÅ© »ó¿¡ »ı¼º (/Assets/Resource Æú´õ¿¡ ÀÖ´Â "Player" ÀÌ¸§ÀÇ ¿ÀºêÁ§Æ® »ı¼º)
         PhotonNetwork.Instantiate("Player", Vector3.up, Quaternion.identity);
-
-        Debug.Log("Ä³¸¯ÅÍ »ı¼º");
+        Debug.Log("ìºë¦­í„° ìƒì„±");
     }
 }

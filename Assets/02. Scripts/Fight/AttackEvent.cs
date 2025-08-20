@@ -11,7 +11,7 @@ public class AttackEvent : MonoBehaviour
     {
         myPv = transform.root.GetComponent<PhotonView>();
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
